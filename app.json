@@ -1,0 +1,46 @@
+{
+  "expo": {
+    "name": "Treinos",
+    "slug": "Treinos",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icone.png",
+    "scheme": "myapp",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/images/icone.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/icone.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.marcosc974.Treinos"
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./assets/images/icone.png"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-font"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "508826f6-0885-4044-b970-94c381a7b830"
+      }
+    }
+  }
+}
