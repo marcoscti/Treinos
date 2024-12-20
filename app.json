@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Treinos",
-    "slug": "Treinos",
+    "slug": "treinos",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icone.png",
@@ -39,8 +39,9 @@
         "origin": false
       },
       "eas": {
-        "projectId": "508826f6-0885-4044-b970-94c381a7b830"
+        "projectId": "d6c6d1aa-59e7-4660-9f4e-684641030951"
       }
-    }
+    },
+    "owner": "marcosc974"
   }
 }
