@@ -1,6 +1,5 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Text, View, StatusBar, ScrollView, Button, TouchableOpacity } from 'react-native'
-import { Link, useLocalSearchParams } from 'expo-router'
 import { styles } from './style'
 import HeaderBackground from '../Globals/HeaderBackground'
 import { GlobalContext } from '../Globals/Welcome/GlobalContext'
@@ -11,20 +10,20 @@ import PageTreino from '../Treino/[treino]'
 export default function HomeScreen() {
 
   const { step, setStep } = useContext(GlobalContext)
-  const [treino, setTreino] = React.useState<string>('');
   const router = useRouter();
-  const handleTraining = () => {
+  const handleTraining = (treino: string) => {
     router.push({
       pathname: '/',
       params: { treino: treino }
     })
     setStep({ step: treino })
   }
+
   return (
     <View>
       <StatusBar />
       <HeaderBackground />
-      <View>
+      <View style={styles.titleContainer}>
         <Text style={styles.treinoTitle}>
           Meus Treinos
         </Text>
@@ -32,11 +31,14 @@ export default function HomeScreen() {
       {
         step.step == 'global' ?
           <ScrollView style={styles.scrollContainer}>
-            <TouchableOpacity style={styles.link} onPress={() => { setTreino('treinoInferiores'), handleTraining() }}>
-              <Text style={styles.linkItem}>Treino Inferiores</Text>
+            <TouchableOpacity style={styles.link} onPress={() => { handleTraining('treinoInferiores') }}>
+              <Text style={styles.linkItem}><Text style={styles.treinoLabel}>Treino (A):</Text> Membros Inferiores</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.link} onPress={() => { setTreino('treinoSuperiores'), handleTraining() }}>
-              <Text style={styles.linkItem}>Treino Superiores</Text>
+            <TouchableOpacity style={styles.link} onPress={() => { handleTraining('treinoSuperiores') }}>
+              <Text style={styles.linkItem}><Text style={styles.treinoLabel}>Treino (B):</Text> Membros Superiores</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.link} onPress={() => { handleTraining('treinoAbdomen') }}>
+              <Text style={styles.linkItem}><Text style={styles.treinoLabel}>Treino (C):</Text> Abdômen</Text>
             </TouchableOpacity>
           </ScrollView> :
           <View>

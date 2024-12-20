@@ -2,20 +2,20 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
     container: {
-      margin: 10
+      marginLeft: 10,
+      marginRight: 10,
+      marginBottom: 10,
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      width: '100%'
     },
     treinoTitle: {
       color: '#34376c',
-      fontSize: 32,
-      paddingTop: 20,
+      fontSize: 22,
+      paddingTop: 10,
       paddingBottom: 10,
-      fontWeight: 'bold',
-      
-    },
-    scrollContainer: {
-      marginLeft: 10,
-      marginRight: 10,
-      height: 350
+      textTransform: 'uppercase',
     },
     link:{
       height: 80,
@@ -27,9 +27,5 @@ export const styles = StyleSheet.create({
       marginBottom: 10,
       boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)',
       display: 'flex'
-    },
-    linkItem:{
-      fontSize: 20,
-      fontWeight: '500',
     }
   })

@@ -1,35 +1,51 @@
-import { Text, View, StyleSheet, Image, TouchableOpacity, Button } from "react-native"
+import { Text, View, StyleSheet, Image, TouchableOpacity, Button, ActivityIndicator } from "react-native"
 import { TreinoType } from "../types";
+import { setLastUpdate } from "../utils/setLastUpdate";
+import { useState } from "react";
+import { setApiData } from "../utils/api";
 
+const Treino = ({ image, title, series, performanceMin, performanceMax, sections, sectionMax, lastUpdate, planilha, linha }: TreinoType) => {
+    const [getSection, setSection] = useState(sections)
+    const [load, setLoad] = useState(false)
 
-const Treino = (i: TreinoType) => {
-    const handlePress = () => {
-        console.log('Pressionou')
-    }
-    const handleSection = () => {
-        console.log('Pressionou na secao')
+    const handlePressPlus = async (operator?: string) => {
+        setLoad(true)
+        operator === 'plus' ? setSection(getSection + 1) : setSection(getSection - 1)
+        setSection(getSection + 1)
+        const treinoName = planilha.toString().replace(/treino/i, "")
+        await setApiData(treinoName, linha, 5, operator === 'plus' ? getSection + 1 : getSection - 1)
+        await setApiData(treinoName, linha, 7, new Date().toISOString())
+        setLoad(false)
     }
     return (
-        <TouchableOpacity style={styles.containerCard} onPress={handlePress}>
-
+        <TouchableOpacity style={styles.containerCard}>
             <View style={styles.subcontainerImage}>
-                <Image source={{ uri: i.image, width: 95, height: 95 }} />
+                <Image source={{ uri: image, width: 95, height: 95 }} />
             </View>
             <View style={styles.subcontainerData}>
-                <Text style={styles.titleCard}>{i.title}</Text>
-                <Text style={styles.performanceData}>{i.series} x {i.performanceMin} {i.performanceMax > 0 && `~ ${i.performanceMax}`}</Text>
-                <Text>Sessoes: {i.sections}/{i.sectionMax}</Text>
-                <View style={{ display: 'flex', flexDirection: 'row', gap: 10, width: '100%' }}>
-                    <Button
-                        title="+"
-                        color="#9b73f7"
-                        onPress={handleSection}
-                    />
-                    <Button
-                        title="-"
-                        color="#ff7976"
-                        onPress={handleSection}
-                    />
+                <Text style={styles.titleCard}>{title}</Text>
+                <Text style={styles.performanceData}>{series} x {performanceMin} {performanceMax > 0 && `~ ${performanceMax}`}</Text>
+                <Text>Sessoes: {getSection}/{sectionMax}</Text>
+                <View style={{ display: 'flex', flexDirection: 'row', gap: 10, width: '60%' }}>
+                    <View style={{ flex: 1 }}>
+                        <Button
+                            title={load ? '...' : '+'}
+                            color="#9b73f7"
+                            onPress={() => { handlePressPlus('plus') }}
+                        />
+                    </View>
+                    <View style={{ flex: 1 }}>
+                        <Button
+                            title={load ? '...' : '-'}
+                            color="#ff7976"
+                            onPress={() => { handlePressPlus('minus') }}
+                            disabled={load}
+                        />
+                    </View>
+
+                </View>
+                <View>
+                    <Text>Última Execução: <Text>{setLastUpdate(lastUpdate)}</Text></Text>
                 </View>
             </View>
 
@@ -47,7 +63,8 @@ const styles = StyleSheet.create({
     },
     titleCard: {
         fontSize: 22,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: '#34376c'
     },
     subcontainerImage: {
         width: 100,

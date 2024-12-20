@@ -28,5 +28,8 @@ export interface TreinoType{
     performanceMin:number,
     performanceMax:number,
     sections:number,
-    sectionMax:number
+    sectionMax:number,
+    lastUpdate?:Date | string,
+    planilha?:string,
+    linha?:number
 }
