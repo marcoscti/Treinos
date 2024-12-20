@@ -1,8 +1,9 @@
 import { Text, View, StyleSheet, Image, TouchableOpacity, Button, ActivityIndicator } from "react-native"
 import { TreinoType } from "../types";
-import { setLastUpdate } from "../utils/setLastUpdate";
 import { useState } from "react";
-import { setApiData } from "../utils/api";
+import { setApiData } from "../Globals/utils/api";
+import { setLastUpdate } from "../Globals/utils/setLastUpdate";
+
 
 const Treino = ({ image, title, series, performanceMin, performanceMax, sections, sectionMax, lastUpdate, planilha, linha }: TreinoType) => {
     const [getSection, setSection] = useState(sections)
