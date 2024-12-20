@@ -9,7 +9,7 @@ export default function GlobalContextProvider({ children }: GlobalContextProps) 
         name: "Atualizando...", photo: "Atualizando...", capa: "Atualizando...",
     })
     const [step, setStep] = useState<step>({ step: "global" })
-
+    
     useEffect(() => {
         getApiData()
             .then((data: ApiResponse) => {
@@ -21,7 +21,7 @@ export default function GlobalContextProvider({ children }: GlobalContextProps) 
                 setStep({ step: "global" })
             })
             .catch((err) => console.error("Error fetching user data:", err))
-    }, [usuario])
+    }, [])
 
     return (
         <GlobalContext.Provider value={{ usuario, setUsuario, step, setStep }}>
