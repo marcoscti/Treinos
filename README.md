@@ -1,4 +1,10 @@
-# Welcome to your Expo app 👋
+# APP Meus Treinos
+Este app, foi criado com o intuito de facilitar a visualização dos treinos da minha esposa, visto que a academia em que treinamos atualmente não possui uma boa organização disso, como haviamos criado uma planilha para organizá-lo preferi criar um app, com base no que estou aprendendo sobre react-native.
+
+A idéia é que as ilustrações e vídeos ajude-a a assimilar o tipo de exercício executado.
+
+![Thumb 01](https://raw.githubusercontent.com/marcoscti/Treinos/thumbs/01.png)
+![Thumb 02](https://raw.githubusercontent.com/marcoscti/Treinos/thumbs/02.png)
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
