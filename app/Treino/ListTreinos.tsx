@@ -16,7 +16,7 @@ const ListTreinos = () => {
             }
         })
     }, [treino])
-    
+
     return (
         load ? list.map((item: any, index: number) => {
             return (
