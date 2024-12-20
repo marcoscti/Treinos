@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 import Treino from "."
 import { ActivityIndicator, View } from "react-native"
-import { getApiData } from "../utils/api"
 import { useLocalSearchParams } from "expo-router"
+import { getApiData } from "../Globals/utils/api"
 
 const ListTreinos = () => {
     const { treino }: any = useLocalSearchParams()

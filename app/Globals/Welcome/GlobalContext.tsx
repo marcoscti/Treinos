@@ -1,6 +1,6 @@
 import React, { useState, createContext, useEffect } from "react"
 import { ApiResponse, GlobalContextProps, GlobalContextValue, step, UsuarioProps, } from "@/app/types"
-import { getApiData } from "../app/utils/api"
+import { getApiData } from "../utils/api"
 
 
 export const GlobalContext = createContext<GlobalContextValue | undefined>(undefined)

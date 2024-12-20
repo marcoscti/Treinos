@@ -5,8 +5,8 @@ import HeaderBackground from '../Globals/HeaderBackground'
 import { GlobalContext } from '../Globals/Welcome/GlobalContext'
 import { useRouter } from 'expo-router';
 import PageTreino from '../Treino/[treino]'
-import { getApiData } from '../utils/api'
 import { ApiResponse } from '../types'
+import { getApiData } from '../Globals/utils/api'
 
 export default function HomeScreen() {
   const { step, setStep, setUsuario,usuario } = useContext(GlobalContext)
