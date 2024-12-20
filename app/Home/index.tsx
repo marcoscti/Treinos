@@ -1,16 +1,22 @@
-import React, { useContext, useState } from 'react'
-import { Text, View, StatusBar, ScrollView, Button, TouchableOpacity } from 'react-native'
+import React, { useContext } from 'react'
+import { Text, View, StatusBar, ScrollView, Button, TouchableOpacity, RefreshControl } from 'react-native'
 import { styles } from './style'
 import HeaderBackground from '../Globals/HeaderBackground'
 import { GlobalContext } from '../Globals/Welcome/GlobalContext'
 import { useRouter } from 'expo-router';
 import PageTreino from '../Treino/[treino]'
 
-
 export default function HomeScreen() {
-
   const { step, setStep } = useContext(GlobalContext)
   const router = useRouter();
+  const [refreshing, setRefreshing] = React.useState(false);
+  
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 2000);
+  }, []);
   const handleTraining = (treino: string) => {
     router.push({
       pathname: '/',
@@ -30,7 +36,7 @@ export default function HomeScreen() {
       </View>
       {
         step.step == 'global' ?
-          <ScrollView style={styles.scrollContainer}>
+          <ScrollView style={styles.scrollContainer} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}>
             <TouchableOpacity style={styles.link} onPress={() => { handleTraining('treinoInferiores') }}>
               <Text style={styles.linkItem}><Text style={styles.treinoLabel}>Treino (A):</Text> Membros Inferiores</Text>
             </TouchableOpacity>
